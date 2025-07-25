@@ -11,7 +11,7 @@ RMT-based driver for WS2812B/SK6812/APA106/SM16703 LED strips.
 ## Installation
 
 ```sh
-idf.py add-dependency "esp-idf-lib/led_strip^1.2.0
+idf.py add-dependency esp-idf-lib/led_strip^1.2.0
 ```
 
 ## Support
