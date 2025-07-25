@@ -1,5 +1,9 @@
 # esp-idf-lib/led_strip
 
+[![Build examples](https://github.com/esp-idf-lib/led_strip/actions/workflows//build.yml/badge.svg)](https://github.com/esp-idf-lib/led_strip/actions/workflows//build.yml)
+[![Build docs](https://github.com/esp-idf-lib/led_strip/actions/workflows//build-docs.yml/badge.svg)](https://github.com/esp-idf-lib/led_strip/actions/workflows//build-docs.yml)
+[![Validation](https://github.com/esp-idf-lib/led_strip/actions/workflows//validate-component.yml/badge.svg)](https://github.com/esp-idf-lib/led_strip/actions/workflows//validate-component.yml)
+
 RMT-based driver for WS2812B/SK6812/APA106/SM16703 LED strips.
 
 * [Documentation](https://esp-idf-lib.github.io/led_strip/)
@@ -11,7 +15,7 @@ RMT-based driver for WS2812B/SK6812/APA106/SM16703 LED strips.
 ## Installation
 
 ```sh
-idf.py add-dependency esp-idf-lib/led_strip^1.2.0
+idf.py add-dependency esp-idf-lib/led_strip
 ```
 
 ## Support
