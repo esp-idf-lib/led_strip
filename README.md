@@ -1,12 +1,26 @@
-# RMT-based ESP-IDF driver for WS2812B/SK6812/APA106 LED strips
+# esp-idf-lib/led_strip
 
-The driver is **broken**. See
-[led_strip: Deprecated RMT driver #331](https://github.com/UncleRus/esp-idf-lib/issues/331)
-for more details.
+RMT-based driver for WS2812B/SK6812/APA106/SM16703 LED strips.
 
-**WARNING!** If you try to use this driver simultaneously with Wi-Fi, you may
-encounter RMT transmission bugs. To avoid them, simply initialize device
-descriptor from the task bound to the second processor core.
+* [Documentation](https://esp-idf-lib.github.io/led_strip/)
+* [Repository](https://github.com/esp-idf-lib/led_strip)
+* [Issues](https://github.com/esp-idf-lib/led_strip/issues)
+* [Discussions and questions](https://github.com/esp-idf-lib/core/discussions)
+* [Component page at the ESP Component Registry](https://components.espressif.com/components/esp-idf-lib/led_strip)
 
-Interrupt handlers assigned during the initialization of the RMT driver are
-bound to the core on which the initialization took place.
+## Installation
+
+```sh
+idf.py add-dependency "esp-idf-lib/led_strip^1.2.0
+```
+
+## Support
+
+For questions and discussions about the component, please use
+[Discussions](https://github.com/esp-idf-lib/core/discussions)
+at [esp-idf-lib/core](https://github.com/esp-idf-lib/core).
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://github.com/esp-idf-lib/core/blob/main/CONTRIBUTING.md)
+at [esp-idf-lib/core](https://github.com/esp-idf-lib/core).
