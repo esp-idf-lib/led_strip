@@ -1,16 +1,5 @@
 ---
 version: 1.0.0
-description: default
-dependencies:
-  esp-idf-lib/led_strip:
-    version: "*"
-    override_path: "../../../"
-  esp-idf-lib/color:
-    version: "*"
-  esp-idf-lib/esp_idf_lib_helpers:
-    version: "*"
----
-version: 1.0.0
 description: led_effects
 dependencies:
   esp-idf-lib/led_strip:
