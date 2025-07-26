@@ -1,5 +1,5 @@
 ---
-version: 1.2.1
+version: 1.2.2
 description: RMT-based driver for WS2812B/SK6812/APA106/SM16703 LED strips
 license: MIT
 targets:
