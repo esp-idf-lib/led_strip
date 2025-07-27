@@ -10,3 +10,5 @@ dependencies:
     version: '*'
   esp-idf-lib/noise:
     version: '*'
+  esp-idf-lib/framebuffer:
+    version: '*'
