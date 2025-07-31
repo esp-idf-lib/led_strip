@@ -11,7 +11,8 @@
 #define CHECK(x) do { esp_err_t __; if ((__ = x) != ESP_OK) return __; } while (0)
 #define CHECK_ARG(VAL) do { if (!(VAL)) return ESP_ERR_INVALID_ARG; } while (0)
 
-static const uint8_t exp_gamma[256] = {
+static const uint8_t exp_gamma[256] =
+{
     0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   1,   1,   1,
     1,   1,   1,   1,   1,   1,   1,   1,   1,   1,   1,   1,   1,   1,   1,
     1,   2,   2,   2,   2,   2,   2,   2,   2,   2,   3,   3,   3,   3,   3,
@@ -88,7 +89,8 @@ esp_err_t led_effect_plasma_waves_run(framebuffer_t *fb)
             uint8_t g = cos8((y << 3) + t1 + cos8((t3 >> 2) + (x << 3)));
             uint8_t b = cos8((y << 3) + t2 + cos8(t1 + x + (g >> 2)));
 
-            rgb_t c = {
+            rgb_t c =
+            {
                 .r = exp_gamma[r],
                 .g = exp_gamma[g],
                 .b = exp_gamma[b]

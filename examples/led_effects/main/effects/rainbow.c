@@ -24,7 +24,7 @@ typedef struct
 } params_t;
 
 esp_err_t led_effect_rainbow_init(framebuffer_t *fb, led_effect_rainbow_direction_t direction,
-        uint8_t scale, uint8_t speed)
+                                  uint8_t scale, uint8_t speed)
 {
     CHECK_ARG(fb);
 
@@ -46,7 +46,7 @@ esp_err_t led_effect_rainbow_done(framebuffer_t *fb)
 }
 
 esp_err_t led_effect_rainbow_set_params(framebuffer_t *fb, led_effect_rainbow_direction_t direction,
-        uint8_t scale, uint8_t speed)
+                                        uint8_t scale, uint8_t speed)
 {
     CHECK_ARG(fb && fb->internal);
 
@@ -70,7 +70,8 @@ esp_err_t led_effect_rainbow_run(framebuffer_t *fb)
             for (size_t y = 0; y < fb->height; y++)
             {
                 float twirl = 3.0f * params->scale / 100.0f;
-                hsv_t color = {
+                hsv_t color =
+                {
                     .hue = fb->frame_num * params->speed * 2 + (fb->width / fb->height * x + y * twirl) * params->scale,
                     .sat = 255,
                     .val = 255
@@ -85,7 +86,8 @@ esp_err_t led_effect_rainbow_run(framebuffer_t *fb)
 
         for (size_t i = 0; i < outer; i++)
         {
-            hsv_t color = {
+            hsv_t color =
+            {
                 .hue = fb->frame_num * params->speed + i * params->scale,
                 .sat = 255,
                 .val = 255

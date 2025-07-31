@@ -32,7 +32,7 @@ typedef struct
 } params_t;
 
 esp_err_t led_effect_waterfall_init(framebuffer_t *fb, led_effect_waterfall_mode_t mode,
-        uint8_t hue, uint8_t cooling, uint8_t sparking)
+                                    uint8_t hue, uint8_t cooling, uint8_t sparking)
 {
     CHECK_ARG(fb);
 
@@ -67,7 +67,7 @@ esp_err_t led_effect_waterfall_done(framebuffer_t *fb)
 }
 
 esp_err_t led_effect_waterfall_set_params(framebuffer_t *fb, led_effect_waterfall_mode_t mode,
-        uint8_t hue, uint8_t cooling, uint8_t sparking)
+                                          uint8_t hue, uint8_t cooling, uint8_t sparking)
 {
     CHECK_ARG(fb && fb->internal);
 
@@ -80,33 +80,33 @@ esp_err_t led_effect_waterfall_set_params(framebuffer_t *fb, led_effect_waterfal
     {
         case WATERFALL_SIMPLE:
             rgb_fill_gradient4_hsv(params->palette, PALETTE_SIZE,
-                    hsv_from_values(0, 0, 0),
-                    hsv_from_values(hue, 0, 255),
-                    hsv_from_values(hue, 128, 255),
-                    hsv_from_values(hue, 255, 255),
-                    COLOR_SHORTEST_HUES);
+                                   hsv_from_values(0, 0, 0),
+                                   hsv_from_values(hue, 0, 255),
+                                   hsv_from_values(hue, 128, 255),
+                                   hsv_from_values(hue, 255, 255),
+                                   COLOR_SHORTEST_HUES);
             break;
         case WATERFALL_COLORS:
             rgb_fill_gradient4_hsv(params->palette, PALETTE_SIZE,
-                    hsv_from_values(0, 0, 0),
-                    hsv_from_values(hue, 0, 255),
-                    hsv_from_values(hue, 128, 255),
-                    hsv_from_values(255, 255, 255),
-                    COLOR_SHORTEST_HUES);
+                                   hsv_from_values(0, 0, 0),
+                                   hsv_from_values(hue, 0, 255),
+                                   hsv_from_values(hue, 128, 255),
+                                   hsv_from_values(255, 255, 255),
+                                   COLOR_SHORTEST_HUES);
             break;
         case WATERFALL_FIRE:
             rgb_fill_gradient4_rgb(params->palette, PALETTE_SIZE,
-                    rgb_from_values(0, 0, 0),       // black
-                    rgb_from_values(255, 0, 0),
-                    rgb_from_values(255, 255, 0),
-                    rgb_from_values(255, 255, 255)); // white
+                                   rgb_from_values(0, 0, 0),       // black
+                                   rgb_from_values(255, 0, 0),
+                                   rgb_from_values(255, 255, 0),
+                                   rgb_from_values(255, 255, 255)); // white
             break;
         case WATERFALL_COLD_FIRE:
             rgb_fill_gradient4_rgb(params->palette, PALETTE_SIZE,
-                    rgb_from_values(0, 0, 0),       // black
-                    rgb_from_values(0, 0, 100),
-                    rgb_from_values(0, 200, 255),
-                    rgb_from_values(255, 255, 255)); // white
+                                   rgb_from_values(0, 0, 0),       // black
+                                   rgb_from_values(0, 0, 100),
+                                   rgb_from_values(0, 200, 255),
+                                   rgb_from_values(255, 255, 255)); // white
             break;
         default:
             return ESP_ERR_NOT_SUPPORTED;
@@ -134,7 +134,7 @@ esp_err_t led_effect_waterfall_run(framebuffer_t *fb)
         // Step 2.  Heat from each cell drifts 'up' and diffuses a little
         for (y = fb->height - 1; y >= 2; y--)
             params->map[MAP_XY(x, y)] =
-                    (params->map[MAP_XY(x, y - 1)] + params->map[MAP_XY(x, y - 2)] + params->map[MAP_XY(x, y - 2)]) / 3;
+                (params->map[MAP_XY(x, y - 1)] + params->map[MAP_XY(x, y - 2)] + params->map[MAP_XY(x, y - 2)]) / 3;
 
         // Step 3.  Randomly ignite new 'sparks' of heat near the bottom
         if (random8() < params->sparking)
@@ -151,7 +151,7 @@ esp_err_t led_effect_waterfall_run(framebuffer_t *fb)
             uint8_t color_idx = scale8(params->map[MAP_XY(x, y)], 240);
             bool is_fire = (params->mode == WATERFALL_FIRE || params->mode == WATERFALL_COLD_FIRE);
             fb_set_pixel_rgb(fb, x, is_fire ? y : fb->height - 1 - y,
-                    color_from_palette_rgb(params->palette, PALETTE_SIZE, color_idx, 255, true));
+                             color_from_palette_rgb(params->palette, PALETTE_SIZE, color_idx, 255, true));
         }
     }
 

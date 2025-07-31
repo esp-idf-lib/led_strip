@@ -16,7 +16,8 @@
 extern "C" {
 #endif
 
-typedef enum {
+typedef enum
+{
     RAIN_MODE_SINGLE_COLOR = 0,
     RAIN_MODE_RAINBOW
 } led_effect_rain_mode_t;

@@ -35,7 +35,8 @@ static const char *TAG = "led_effect_example";
 
 #define CHECK(x) do { esp_err_t __; if ((__ = x) != ESP_OK) return __; } while (0)
 
-typedef enum {
+typedef enum
+{
     EFFECT_NONE = 0,
 
     EFFECT_DNA,
@@ -79,7 +80,8 @@ static esp_err_t render_frame(framebuffer_t *fb, void *arg)
     return led_strip_flush(led_strip);
 }
 
-static led_strip_t strip = {
+static led_strip_t strip =
+{
     .type = LED_TYPE,
     .length = LED_MATRIX_WIDTH * LED_MATRIX_HEIGHT,
     .gpio = LED_GPIO,
@@ -111,7 +113,7 @@ static void switch_effect(fb_animation_t *animation)
 
     // init new effect
     fb_draw_cb_t effect_func = NULL;
-    switch(current_effect)
+    switch (current_effect)
     {
         case EFFECT_DNA:
             led_effect_dna_init(animation->fb, random8_between(10, 100), random8_between(1, 10), random8_to(2));

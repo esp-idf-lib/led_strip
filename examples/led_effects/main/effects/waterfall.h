@@ -23,7 +23,8 @@
 extern "C" {
 #endif
 
-typedef enum {
+typedef enum
+{
     WATERFALL_SIMPLE = 0,
     WATERFALL_COLORS,
     WATERFALL_FIRE,
@@ -31,12 +32,12 @@ typedef enum {
 } led_effect_waterfall_mode_t;
 
 esp_err_t led_effect_waterfall_init(framebuffer_t *fb, led_effect_waterfall_mode_t mode,
-        uint8_t hue, uint8_t cooling, uint8_t sparking);
+                                    uint8_t hue, uint8_t cooling, uint8_t sparking);
 
 esp_err_t led_effect_waterfall_done(framebuffer_t *fb);
 
 esp_err_t led_effect_waterfall_set_params(framebuffer_t *fb, led_effect_waterfall_mode_t mode,
-        uint8_t hue, uint8_t cooling, uint8_t sparking);
+                                          uint8_t hue, uint8_t cooling, uint8_t sparking);
 
 esp_err_t led_effect_waterfall_run(framebuffer_t *fb);
 

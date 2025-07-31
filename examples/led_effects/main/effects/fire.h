@@ -19,7 +19,8 @@
 extern "C" {
 #endif
 
-typedef enum {
+typedef enum
+{
     FIRE_PALETTE_FIRE = 0,
     FIRE_PALETTE_BLUE,
     FIRE_PALETTE_GREEN

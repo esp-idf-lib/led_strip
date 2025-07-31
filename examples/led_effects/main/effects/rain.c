@@ -68,7 +68,7 @@ esp_err_t led_effect_rain_run(framebuffer_t *fb)
         fb_get_pixel_rgb(fb, x, fb->height - 1, &c);
         if (!rgb_luma(c) && random8_to(params->density) == 0)
             fb_set_pixel_hsv(fb, x, fb->height - 1,
-                    hsv_from_values(params->mode == RAIN_MODE_SINGLE_COLOR ? params->hue : random8(), 255, 255));
+                             hsv_from_values(params->mode == RAIN_MODE_SINGLE_COLOR ? params->hue : random8(), 255, 255));
         else
         {
             c = rgb_scale(c, params->tail + random8_to(100) - 50);

@@ -110,48 +110,52 @@ static void IRAM_ATTR _rmt_adapter(const void *src, rmt_item32_t *dest, size_t s
     *item_num = num;
 }
 
-typedef struct {
+typedef struct
+{
     rmt_item32_t bit0, bit1;
 } led_rmt_t;
 
 static led_rmt_t rmt_items[LED_STRIP_TYPE_MAX] = { 0 };
 
 static void IRAM_ATTR ws2812_rmt_adapter(const void *src, rmt_item32_t *dest, size_t src_size,
-        size_t wanted_num, size_t *translated_size, size_t *item_num)
+                                         size_t wanted_num, size_t *translated_size, size_t *item_num)
 {
     _rmt_adapter(src, dest, src_size, wanted_num, translated_size, item_num, &rmt_items[LED_STRIP_WS2812].bit0, &rmt_items[LED_STRIP_WS2812].bit1);
 }
 
 static void IRAM_ATTR sk6812_rmt_adapter(const void *src, rmt_item32_t *dest, size_t src_size,
-        size_t wanted_num, size_t *translated_size, size_t *item_num)
+                                         size_t wanted_num, size_t *translated_size, size_t *item_num)
 {
     _rmt_adapter(src, dest, src_size, wanted_num, translated_size, item_num, &rmt_items[LED_STRIP_SK6812].bit0, &rmt_items[LED_STRIP_SK6812].bit1);
 }
 
 static void IRAM_ATTR apa106_rmt_adapter(const void *src, rmt_item32_t *dest, size_t src_size,
-        size_t wanted_num, size_t *translated_size, size_t *item_num)
+                                         size_t wanted_num, size_t *translated_size, size_t *item_num)
 {
     _rmt_adapter(src, dest, src_size, wanted_num, translated_size, item_num, &rmt_items[LED_STRIP_APA106].bit0, &rmt_items[LED_STRIP_APA106].bit1);
 }
 
 static void IRAM_ATTR sm16703_rmt_adapter(const void *src, rmt_item32_t *dest, size_t src_size,
-                                         size_t wanted_num, size_t *translated_size, size_t *item_num)
+                                          size_t wanted_num, size_t *translated_size, size_t *item_num)
 {
     _rmt_adapter(src, dest, src_size, wanted_num, translated_size, item_num, &rmt_items[LED_STRIP_SM16703].bit0, &rmt_items[LED_STRIP_SM16703].bit1);
 }
 
-typedef enum {
+typedef enum
+{
     ORDER_GRB,
     ORDER_RGB,
 } color_order_t;
 
-typedef struct {
+typedef struct
+{
     uint32_t t0h, t0l, t1h, t1l;
     color_order_t order;
     sample_to_rmt_t adapter;
 } led_params_t;
 
-static const led_params_t led_params[] = {
+static const led_params_t led_params[] =
+{
     [LED_STRIP_WS2812]  = { .t0h = 400, .t0l = 1000, .t1h = 1000, .t1l = 400, .order = ORDER_GRB, .adapter = ws2812_rmt_adapter },
     [LED_STRIP_SK6812]  = { .t0h = 300, .t0l = 900,  .t1h = 600,  .t1l = 600, .order = ORDER_GRB, .adapter = sk6812_rmt_adapter },
     [LED_STRIP_APA106]  = { .t0h = 350, .t0l = 1360, .t1h = 1360, .t1l = 350, .order = ORDER_RGB, .adapter = apa106_rmt_adapter },
